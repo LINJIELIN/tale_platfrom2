@@ -1,54 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4eb036d-94f6-4de7-b606-18c3b3c71f9a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/LostAndFound_platfrom2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/.babelrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/.postcssrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/build/build.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/build/check-versions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/build/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/build/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/build/vue-loader.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/build/webpack.base.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/build/webpack.dev.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/build/webpack.prod.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/config/dev.env.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/config/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/config/prod.env.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/config/test.env.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/api/Api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/assets/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/components/HelloWorld.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/pages/Home.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/pages/Login.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/pages/director/Add.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/pages/director/AddDirector2.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/pages/director/DetailAndUpdate.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/pages/director/List.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/pages/director/Test.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/src/router/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/static/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/test/unit/.eslintrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/test/unit/jest.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/test/unit/setup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tale_platfrom2/test/unit/specs/HelloWorld.spec.js" afterDir="false" />
-    </list>
+    <list default="true" id="d4eb036d-94f6-4de7-b606-18c3b3c71f9a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -60,10 +13,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tale_platfrom2/src/App.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/tale_platfrom2/src/App.vue" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="37" />
@@ -88,6 +58,12 @@
               <item name="LostAndFound_platfrom2" type="b2602c69:ProjectViewProjectNode" />
               <item name="LostAndFound_platfrom2" type="462c0819:PsiDirectoryNode" />
               <item name="tale_platfrom2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LostAndFound_platfrom2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LostAndFound_platfrom2" type="462c0819:PsiDirectoryNode" />
+              <item name="tale_platfrom2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -128,15 +104,24 @@
       <option name="presentableId" value="Default" />
       <updated>1555053342982</updated>
       <workItem from="1555053347370" duration="1097000" />
-      <workItem from="1555054555983" duration="338000" />
+      <workItem from="1555054555983" duration="528000" />
     </task>
+    <task id="LOCAL-00001" summary="初始化上传">
+      <created>1555054957985</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1555054957985</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1435000" />
+    <option name="totallyTimeSpent" value="1625000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1058" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13962065" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -161,11 +146,15 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="初始化上传" />
+    <option name="LAST_COMMIT_MESSAGE" value="初始化上传" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/tale_platfrom2/src/App.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+        <state relative-caret-position="133">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
