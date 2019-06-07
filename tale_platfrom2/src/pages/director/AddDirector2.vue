@@ -77,7 +77,6 @@
         form.append("name", this.director.name);
         form.append("sex", this.director.sex);
         for (var i = 0; i < this.director.fileList.length; i++) {
-          alert(form.get("name"));
           form.append(
             "fileList",
             document.querySelector("input[type=file]").files[i]
@@ -88,9 +87,9 @@
           "Content-Type": "multipart/form-data"
         })
           .then(function (res) {
-            alert("ok");
+
           }).catch(function (res) {
-          alert("error!!!")
+
         });
       },
     }

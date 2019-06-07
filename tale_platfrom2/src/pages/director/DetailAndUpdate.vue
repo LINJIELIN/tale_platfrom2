@@ -111,7 +111,7 @@
         axios.post("http://localhost:8086/director", form, {
           "Content-Type": "multipart/form-data"
         }).then(function(res){
-          alert(res.data.data);
+
           if (res.data.code == 0) {
             Message({
               showClose: true,
