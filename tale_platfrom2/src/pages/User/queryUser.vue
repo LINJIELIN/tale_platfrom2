@@ -1,5 +1,8 @@
 <template>
   <div align="center">
+    <div style="float: left;margin-left:400px;margin-top:6px;font-size:20px;">
+      用户信息:
+    </div>
     <div class="demo-input-suffix" style="position:relative;left:-12%;">
       按名字查询：
       <el-input style="width:20%;"
@@ -7,9 +10,8 @@
                 prefix-icon="el-icon-search"
                 v-model="inputName">
       </el-input>
-      <el-button @click="getAllPage" type="text" size="small">查看</el-button>
-
-      <el-button @click="getAllUser2" type="text" size="small">查看2222</el-button>
+      <span><el-button type="primary"  @click="getAllPage" style="width: 100px;margin-left:30px;">查看</el-button></span>
+      <span><el-button type="primary"  @click="clean" style="width: 100px;margin-left:30px;">清空</el-button></span>
     </div>
     <hr>
     <div align="center">
@@ -28,7 +30,7 @@
         </el-table-column>
         <el-table-column fixed="right" label="操作" width="110"align="center">
           <template slot-scope="scope" content="normal">
-            <el-button @click="handleClick(scope.row.id)" type="text" size="small">修改</el-button>
+            <!--<el-button @click="handleClick(scope.row.id)" type="text" size="small">修改</el-button>-->
             <el-button @click="deleteById(scope.row.id)"class="delete" type="text" size="small"><span style="color: red">删除</span></el-button>
           </template>
         </el-table-column>
@@ -46,25 +48,25 @@
       </div>
 
     </div>
-    <el-dialog class="plan-eff-dialog" title="修改用户信息" :visible.sync="editUserInfo" width="40%">
+    <el-dialog class="plan-eff-dialog" title="修改用户信息" :visible.sync="editUserInfo" width="36%">
       <template>
         <el-form :inline="true" :model="formInline" class="demo-form-inline">
           <el-form-item label="编号"  style="margin-top:30px;">
             <el-input v-model="formInline.id" ></el-input>
           </el-form-item>
-          <el-form-item label="姓名" style="margin-left:60px;margin-top:28px;">
+          <el-form-item label="用户名234234234" style="margin-left:60px;margin-top:30px;">
             <el-input v-model="formInline.name" ></el-input>
           </el-form-item>
-          <el-form-item label="用户名" style="margin-left:-16px;margin-top:30px;">
-            <el-input v-model="formInline.userName" ></el-input>
-          </el-form-item>
-          <el-form-item label="电话" style="margin-left:58px;margin-top:30px;">
-            <el-input v-model="formInline.phone" ></el-input>
-          </el-form-item>
-          <el-form-item label="邮箱" style="margin-left:71px;margin-top:30px;">
+          <el-form-item label="邮箱" style="margin-top:30px;">
             <el-input v-model="formInline.email" ></el-input>
           </el-form-item>
-          <el-form-item label="权限" style="margin-left:51px;margin-top:30px;">
+          <el-form-item label="电话" style="margin-left:60px;margin-top:30px;">
+            <el-input v-model="formInline.phone" ></el-input>
+          </el-form-item>
+          <el-form-item label="姓名" style="margin-top:30px;">
+            <el-input v-model="formInline.userName" ></el-input>
+          </el-form-item>
+          <el-form-item label="权限名" style="margin-left:60px;margin-top:30px;">
             <el-select v-model="formInline.root"  >
               <el-option label="管理员" value="管理员"></el-option>
               <el-option label="普通用户" value="普通用户"></el-option>
@@ -74,7 +76,7 @@
             <el-button type="primary" @click="onSubmit">修改</el-button>
           </el-form-item>
           <el-form-item style="margin-bottom: 40px;margin-top: 40px;">
-            <el-button type="primary" @click="onSubmit">关闭</el-button>
+            <el-button type="primary" @click="closeDig">关闭</el-button>
           </el-form-item>
         </el-form>
       </template>
@@ -121,14 +123,15 @@
       this.getAllPage();
     },
     methods: {
+      closeDig(){
+        this.editUserInfo = false;
+      },
       handleClick(id){
         this.editUserInfo = true;
       },
-
       clean:function(){
         this.inputName='';
       },
-
       handleSizeChange(val) {
         this.size = val;
         console.log(val);
@@ -142,13 +145,11 @@
 
       getAllPage:function(){
         let _this = this;
-        //alert("进入分页");
         axios.get("http://localhost:8082/user/list",{
           params:{
             page:this.currentPage,
             size:this.size,
-            name:this.inputTitle,
-            retrieve:this.inputRetrieve,
+            name:this.inputName
           }
         }).then(function (res) {
           const resData = res.data;
@@ -223,7 +224,7 @@
 
       },
       handleDelete(index,row) {
-        axios.delete("http://localhost:8084/user/"+ index)
+        axios.delete("http://localhost:8082/user/"+ index)
           .then((response) => {
             const resDate = response.data;
             if(resDate.code == '0'){

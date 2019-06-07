@@ -76,11 +76,11 @@ export default {
           message:"验证码不正确！",
           type: 'error'
         });
+        return;
       }
       var params = new URLSearchParams();
       params.append("account", this.user.account);
       params.append("password", this.user.pwd);
-     // alert(this.user.account);
       //api.requestLogin(params).then(res => res.data)
 
       api.requestLogin(params).then(res => {
@@ -88,6 +88,9 @@ export default {
         if (res.code == "0"){
           //跳转到后台主界面\\
           sessionStorage.setItem('getUserName', res.data.account);
+          sessionStorage.setItem('getName', res.data.name);
+          sessionStorage.setItem('roleName', res.data.roleName);
+          sessionStorage.setItem('id', res.data.id);
           this.$router.push({ path: '/index' });
           this.$message({
             message: '登录成功',

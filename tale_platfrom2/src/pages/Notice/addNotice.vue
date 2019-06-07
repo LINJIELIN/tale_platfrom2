@@ -46,11 +46,9 @@
         let form = new FormData();
         form.append("title", this.notice.title);
         form.append("content", this.notice.content);
-        alert(32432);
         axios.post("http://localhost:8082/notice", form,{
           "Content-Type": "multipart/form-data"
         }).then(function (res) {
-          alert(res.data.data);
           if (res.data.code == 0) {
             Message({
               showClose: true,

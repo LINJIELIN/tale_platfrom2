@@ -2,16 +2,20 @@
   <div>
     <el-form ref="thank" :model="thank" :rules="rules" label-width="30%" style="margin-left: 15%;margin-top: 5%">
       <h1 style="color: black;margin-left: -375px;">感谢信</h1>
-      <el-form-item label="标题" style="width: 80%">
+
+      <el-form-item prop="title" label="标题" style="width: 80%;margin-top: 20px">
         <el-input v-model="thank.title" placeholder="请输入标题"style="width: 50%;margin-left: -50%"></el-input>
       </el-form-item>
-      <el-form-item label="公告内容"  style="width: 80%">
-        <el-input type="textarea"placeholder="请输入公告内容" rows="20"v-model="thank.content" style="width: 50%;margin-left: -50%"></el-input>
+
+      <el-form-item prop="content" label="公告内容"  style="width: 80%;margin-top: 20px">
+        <el-input type="textarea"placeholder="请输入公告内容" rows="15"v-model="thank.content" style="width: 50%;margin-left: -50%"></el-input>
       </el-form-item>
-      <el-form-item label="时间" style="width: 80%">
+
+      <el-form-item prop="time" label="时间" style="width: 80%;margin-top: 20px">
         <el-date-picker type="date" placeholder="选择日期" v-model="thank.time" style="width: 50%; margin-left: -50%"></el-date-picker>
       </el-form-item>
-      <el-form-item style="margin-left: -75%">
+
+      <el-form-item style="margin-left: -75%;margin-top: 20px">
         <el-button type="primary" @click="open">立即发布</el-button>
         <el-button>取消</el-button>
       </el-form-item>
@@ -61,22 +65,36 @@
       }
     },
     methods: {
+      cleanFrom(){
+        this.found.title = '';
+        this.found.foundTime = '';
+        this.found.location = '';
+        this.found.type = '';
+        this.found.contacts = '';
+        this.found.phone = '';
+        this.found.information = '';
+        this.onChange('','');
+        this.found.fileList = '';
+      },
+
       open() {
+        var _this = this;
         let form = new FormData();
         form.append("title", this.thank.title);
         form.append("content", this.thank.content);
         form.append("time", dateFormat(this.thank.time));
-        alert(32432);
+
         axios.post("http://localhost:8082/thank", form,{
           "Content-Type": "multipart/form-data"
         }).then(function (res) {
-          alert(res.data.data);
+
           if (res.data.code == 0) {
             Message({
               showClose: true,
               message: "添加成功"+res.data.data,
               type: "success"
             });
+            _this.cleanFrom();
           } else {
             Message({
               showClose: true,

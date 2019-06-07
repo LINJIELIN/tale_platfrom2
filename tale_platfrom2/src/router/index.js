@@ -8,12 +8,14 @@ import HelloWorld from '../components/HelloWorld'
 
 import AddLost from '../pages/Lost/addLost'
 import QueryLost from '../pages/Lost/queryLost'
-import QueryLost2 from '../pages/Lost/queryLost2'
+import QueryHistory from '../pages/Lost/queryHistory'
 
 import  AddFound from '../pages/Found/addFound'
 import QueryFound from '../pages/Found/queryFound'
+
 import  AddNotice from '../pages/Notice/addNotice'
 import QueryNotice from '../pages/Notice/queryNotice'
+
 import  AddThank from '../pages/Thank/addThank'
 import QueryThank from '../pages/Thank/queryThank'
 import Register from '../pages/Register'
@@ -58,7 +60,7 @@ let router = new Router({
         { path: '/HelloWorld', component: HelloWorld },
         { path: '/lost/addLost', component: AddLost},
         { path: '/lost/queryLost', component: QueryLost},
-        { path: '/lost/queryLost2', component: QueryLost2},
+        { path: '/lost/queryHistory', component: QueryHistory},
         { path: '/found/addFound', component: AddFound},
         { path: '/found/queryFound', component: QueryFound},
         { path: '/notice/addNotice', component: AddNotice},

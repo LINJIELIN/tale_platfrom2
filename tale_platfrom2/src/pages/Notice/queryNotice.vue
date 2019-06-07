@@ -1,5 +1,8 @@
 <template>
   <div align="center">
+    <div style="float: left;margin-left:290px;margin-top:6px;font-size:20px;">
+      系统公告:
+    </div>
     <div class="demo-input-suffix" style="position:relative;left:-8%;">
       按标题查询：
       <el-input style="width:20%;"
@@ -7,8 +10,8 @@
                 prefix-icon="el-icon-search"
                 v-model="inputTitle">
       </el-input>
-
-      <el-button @click="getAllPage" type="text" size="small">查看</el-button>
+      <span><el-button type="primary"  @click="getAllPage" style="width: 100px;margin-left:30px;">查看</el-button></span>
+      <span><el-button type="primary"  @click="clean" style="width: 100px;margin-left:30px;">清空</el-button></span>
     </div>
     <hr>
 
@@ -64,7 +67,6 @@
       }
     },
     created:function() {
-      alert(23242);
       this.getAllPage();
     },
     methods: {
@@ -86,7 +88,6 @@
 
       getAllPage:function(){
         let _this = this;
-        //alert("进入分页");
         axios.get("http://localhost:8082/notice/list",{
           params:{
             page:this.currentPage,

@@ -13,8 +13,8 @@
         </el-table-column>
           <el-table-column fixed="right"   label="操作" v-if="showEdit" width="100"align="center">
             <template slot-scope="scope" content="normal">
-              <el-button @click="handleClick(scope.row.id)" type="text" size="small">查看</el-button>
-              <el-button @click="deleteById(scope.row.id)"class="delete" type="text" size="small">删除</el-button>
+              <el-button @click="handleClick(scope.row.id)" type="text" size="small">修改</el-button>
+              <el-button @click="deleteById(scope.row.id)"class="delete" type="text" size="small"><span style="color: red">删除</span></el-button>
             </template>
           </el-table-column>
       </el-table>
@@ -29,6 +29,35 @@
       </el-pagination>
     </div>
 
+    <el-dialog class="plan-eff-dialog" title="修改" :visible.sync="editThank" width="40%">
+      <template>
+        <div style="width: 100%;height: 300px;">
+          <div>
+            <div>
+              <div>
+                <div style="margin-left:-51px;margin-top:30px;">
+                  <span class="ordsum">编号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span style="font-weight:bold;"><el-input  style="width:200px;" v-html="editNum"></el-input></span>
+                  <span class="ordsum"style="padding-left: 50px;">标题：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span style="font-weight:bold;"><el-input  style="width:200px;" v-html="editTitle"></el-input></span>
+                </div>
+                <div style="margin-left:-51px;margin-top:30px;">
+                   <span class="ordsum">时间：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span style="font-weight:bold;">
+                       <el-date-picker type="date" placeholder="选择日期" v-html="editTime" style="width:200px;"></el-date-picker>
+                    </span>
+                  <span class="ordsum"style="padding-left: 50px;">公告内容： </span>
+                  <span style="font-weight:bold;"><el-input type="textarea" :rows="3" placeholder="请输入内容"  style="width:200px;" v-html="editContent"></el-input></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both; padding-top:50px; ">
+            <span><el-button type="primary"  @click="closeFoundDialog" style="width: 120px;margin-left:80px;" ><span style="color:#ffffff;font-weight:bold">关闭</span></el-button></span>
+          </div>
+        </div>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -39,26 +68,32 @@
   export default {
     data() {
       return {
+        editNum:'',
+        editTitle:'',
+        editTime:'',
+        editContent:'',
+        editThank:false,
         isRootName:'',
         showEdit:true,
         total:'',
         currentPage:1,
         size: 5,
+
         thank: {
           id:'',
           title: '',
           content: '',
           time:''
-        }
+        },
       }
     },
     created:function() {
-      this.isRootName = sessionStorage.getItem('getUserName');
+      this.isRootName = sessionStorage.getItem('roleName');
       this.getAllPage();
     },
     mounted:function(){
       var aa= document.getElementById('tableWidth');
-      if( this.isRootName == 'admin'){
+      if( this.isRootName == '管理员'){
         this.showEdit=true;
         aa.style.width="990px";
       }else{
@@ -67,6 +102,29 @@
       }
     },
     methods: {
+      closeFoundDialog(){
+        this.editThank=false;
+      },
+      handleClick(id){
+        axios.get("http://localhost:8082/thank/"+ id)
+          .then((response) => {
+            const resDate = response.data;
+            console.log(resDate)
+            if (resDate.code == "0") {
+              this.editNum=resDate.data.id;
+              this.editTitle=resDate.data.title;
+              this.editTime=resDate.data.time;
+              this.editContent=resDate.data.content;
+              this.editThank=true;
+            } else {
+              this.$message({
+                showClose: true,
+                message: "失败：" + resDate.data,
+                type: 'error'
+              });
+            }
+          })
+      },
       getAllThank: function () {
         let _this = this;
         axios.get("http://localhost:8082/thank/list")
@@ -165,7 +223,5 @@
     }
   }
 </script>
-
 <style >
-
 </style>

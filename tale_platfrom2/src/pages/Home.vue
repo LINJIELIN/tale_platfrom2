@@ -5,45 +5,57 @@
 
         <div style="color: #fff;font-size: 22px;">
           <h1>暖寻校园失物招领系统</h1>
+          <el-dialog class="plan-eff-dialog"  title="修改密码"   :visible.sync="EditPassInfo" width="24%">
+            <template>
+              <div style="height: 300px;">
+                <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+                  <el-form-item label="旧密码" style="margin-top: 30px;width: 350px;" prop="oldPassword">
+                    <el-input type="password" auto-complete="off"  v-model.number="ruleForm2.oldPassword"></el-input>
+                  </el-form-item>
+                  <el-form-item label="新密码" style="margin-top: 30px;width: 350px;" prop="pass">
+                    <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
+                  </el-form-item>
+                  <el-form-item label="确认密码" style="margin-top: 30px;width: 350px;" prop="checkPass">
+                    <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
+                  </el-form-item>
+                  <el-form-item style="margin-left: -60px;">
+                    <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
+                    <el-button @click="resetForm('ruleForm2')">重置</el-button>
+                  </el-form-item>
+                </el-form>
+              </div>
+            </template>
+          </el-dialog>
+
           <el-dialog class="plan-eff-dialog"  title="修改用户信息" :visible.sync="EditUserInfo" width="40%">
             <template>
-              <div style="width: 100%;height: 270px;">
+              <div style="width: 100%;height: 300px;">
                 <div>
                   <div>
                     <div>
                       <div style="margin-left:-51px;margin-top:35px;">
                         <span class="ordsum">编号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
                         <span style="font-weight:bold;"><el-input  style="width:200px;" v-html="editNum"></el-input></span>
-                        <span class="ordsum" style="padding-left: 50px;">姓名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <span style="font-weight:bold;"><el-input  style="width:200px;" v-html="editNume"></el-input></span>
-                      </div>
-                      <div style="margin-left:-51px;margin-top:30px;">
-                        <span class="ordsum">用户名：&nbsp;&nbsp;&nbsp;</span>
-                        <span style="font-weight:bold;"><el-input  style="width:200px;" v-html="editUserName"></el-input></span>
-                        <span class="ordsum" style="padding-left: 50px;">电话：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <span style="font-weight:bold;"><el-input  style="width:200px;" v-html="editPhone"></el-input></span>
-                      </div>
-                      <div style="margin-left:-51px;margin-top:30px;">
-                        <span class="ordsum">邮箱：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-                        <span style="font-weight:bold;"><el-input  style="width:200px;" v-html="editEmail"></el-input></span>
                         <span class="ordsum" style="padding-left: 50px;">用户名：&nbsp;&nbsp;&nbsp;</span>
-                        <span style="font-weight:bold;">
-                           <span style="font-weight:bold;">
-                          <el-select v-model="editRoot" disabled placeholder="请选择" style="width:200px;">
-                          <el-option
-                            v-for="item in options"
-                            :key="item.id"
-                            :label="item.name"
-                            :value="item.id">
-                          </el-option>
-                          </el-select>
-                          </span>
-                        </span>
+                        <span style="font-weight:bold;"><el-input  style="width:200px;" v-model="editUserName"></el-input></span>
+                      </div>
+                      <div style="margin-left:-51px;margin-top:30px;">
+                        <span class="ordsum">姓名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span style="font-weight:bold;"><el-input  style="width:200px;"  v-html="editNume"></el-input></span>
+                        <span class="ordsum" style="padding-left: 50px;">电话：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span style="font-weight:bold;"><el-input  style="width:200px;" v-model="editPhone"></el-input></span>
+                      </div>
+                      <div style="margin-left:-51px;margin-top:30px;">
+                        <span class="ordsum">权限名：&nbsp;&nbsp;&nbsp;</span>
+                        <span style="font-weight:bold;"><el-input  style="width:200px;" v-html="editRoot"></el-input></span>
+                        <span class="ordsum" style="padding-left: 50px;">邮箱：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span style="font-weight:bold;"><el-input  style="width:200px;" v-model="editEmail"></el-input></span>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div style="clear:both; padding-top:50px; ">
+                <div style="clear:both; padding-top:40px; ">
+                  <span><el-button type="primary"  @click="editDialog" style="width: 120px;margin-left:0px;" ><span style="color:#ffffff;font-weight:bold">修改</span></el-button></span>
                   <span><el-button type="primary"  @click="closeDialog" style="width: 120px;margin-left:0px;" ><span style="color:#ffffff;font-weight:bold">关闭</span></el-button></span>
                 </div>
               </div>
@@ -66,7 +78,7 @@
                 <span  @click="changeTrueOrFalse('0')"><router-link class="routerLink" to="/index" style="font-size:22px;margin-left:26px;">首页</router-link></span>
               </el-menu-item>
               <el-menu-item>
-                <i class="el-icon-news"></i><span  @click="changeTrueOrFalse('0')"><router-link class="routerLink" to="/lost/queryLost2" >历史记录</router-link></span>
+                <i class="el-icon-news"></i><span  @click="changeTrueOrFalse('0')"><router-link class="routerLink" to="/lost/queryHistory" >历史记录</router-link></span>
               </el-menu-item>
               <el-submenu index="2">
                 <template slot="title">
@@ -151,12 +163,14 @@
             <a @click="showMoreInfo">
             <span>
              <el-col :span="11">
-                <div style="font-size: 20px;"><span style="padding-top:10px;display: block;">{{this.data}}</span></div>
+                <div style="font-size: 20px;"><span style="padding-top:10px;margin-left:-205px;display: block;">{{this.Name}}</span></div>
              </el-col>
             </span>
             </a>
-            <span style=" position: absolute;left: 1575px;top: 42px; ">当前登录用户：</span>
-            <span><el-button type="primary" @click="IntoLogin()" class="buttcolor11"><span class="buttconter11">用户注销</span></el-button></span>
+            <span style=" position: absolute;left: 1500px;top: 46px; ">当前登录用户：</span>
+            <span><el-button type="primary" @click="editPassword()" style="margin-left:-130px;"><span class="buttconter11">修改密码</span></el-button></span>
+            <span><el-button type="primary" @click="IntoLogin()" style="margin-left:20px;" ><span>用户注销</span></el-button></span>
+
             <!--<h1>用户注销</h1>-->
           </div>
         </el-header>
@@ -178,22 +192,68 @@
   import Message from "element-ui/packages/message/src/main";
   export default {
     data() {
+      var checkAge = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('请输入旧密码'));
+        }
+        callback();
+      };
+      var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入密码'));
+        } else {
+          if (this.ruleForm2.checkPass !== '') {
+            this.$refs.ruleForm2.validateField('checkPass');
+          }
+          callback();
+        }
+      };
+      var validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请再次输入密码'));
+        } else if (value !== this.ruleForm2.pass) {
+          callback(new Error('两次输入密码不一致!'));
+        } else {
+          callback();
+        }
+      };
       return {
+        ruleForm2: {
+          pass: '',
+          checkPass: '',
+          oldPassword: ''
+        },
+        EditPassInfo:false,
+        roleName:'',
         data: '',
+        Name:'',
         EditUserInfo:false,
         editNum:'',
         editNume:'',
         editUserName:'',
         editPhone:'',
         editEmail:'',
-        editRoot:''
+        editRoot:'',
+        rules2: {
+          pass: [
+            { validator: validatePass, trigger: 'blur' }
+          ],
+          checkPass: [
+            { validator: validatePass2, trigger: 'blur' }
+          ],
+          oldPassword: [
+            { validator: checkAge, trigger: 'blur' }
+          ]
+        }
       }
     },
     created:function() {
        this.data = sessionStorage.getItem('getUserName');
+       this.Name = sessionStorage.getItem('getName');
+       this.roleName = sessionStorage.getItem('roleName');
     },
     mounted:function(){
-      if( this.data == 'admin' ){
+      if( this.roleName == '管理员' ){
 
       }else{
         var aa= document.getElementById('showMenu');
@@ -201,8 +261,85 @@
       }
     },
     methods: {
+      submitForm(formName) {
+        var _this = this;
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            let form = new FormData();
+            var id = sessionStorage.getItem("id");
+            form.append("id", id);
+            form.append("oldPassword", _this.ruleForm2.oldPassword);
+            form.append("password", _this.ruleForm2.pass);
+            form.append("checkPassword", _this.ruleForm2.checkPass);
+            //age是旧密码 修改密码
+
+            axios.put("http://localhost:8082/changePassword",form)
+              .then(function(res){
+                console.log(res)
+                if (res.data.code == "0") {
+                  _this.closeDialog();
+                  Message({
+                    showClose: true,
+                    message: res.data.data,
+                    type: "success"
+                  });
+                } else {
+                  _this.closeDialog();
+                  Message({
+                    showClose: true,
+                    message: res.data.data,
+                    type: "error"
+                  });
+                }
+              })
+          } else {
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      },
+      editPassword(){
+        // this.$refs[formName].resetFields();
+        this.ruleForm2.pass='';
+        this.ruleForm2.checkPass='';
+        this.ruleForm2.oldPassword='';
+        this.EditPassInfo=true;
+      },
+      editDialog(){
+        var _this = this;
+        let form = new FormData();
+        form.append("id", _this.editNum);
+        form.append("account", _this.editUserName);
+        form.append("phone", _this.editPhone);
+        form.append("email", _this.editEmail);
+
+        axios.put("http://localhost:8082/user",form)
+          .then(function(res){
+              if (res.data.code == '0') {
+                Message({
+                  showClose: true,
+                  message: res.data.data,
+                  type: "success"
+                });
+                sessionStorage.setItem('getUserName', _this.editUserName);
+                _this.data = _this.editUserName;
+                _this.closeDialog();
+                // window.reload();
+              } else {
+                Message({
+                  showClose: true,
+                  message: "失败:" + res.data.data,
+                  type: "error"
+                });
+              }
+            }
+          )
+      },
       closeDialog(){
         this.EditUserInfo=false;
+        this.EditPassInfo=false;
       },
       showMoreInfo(){
         axios.get("http://localhost:8082/user/account",{
