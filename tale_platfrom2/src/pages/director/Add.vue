@@ -122,7 +122,6 @@
         form.append("nationality", this.director.nationality);
         form.append("introduction", this.director.introduction);
         for (var i = 0; i < this.director.fileList.length; i++) {
-          alert(form.get("name"));
           form.append(
             "fileList",
             document.querySelector("input[type=file]").files[i]
